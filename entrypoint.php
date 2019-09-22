@@ -3,8 +3,8 @@ ini_set("display_errors", "1");
 error_reporting(E_ALL);
 include_once('vendor/autoload.php');
 
-$dotenv = Dotenv\Dotenv::create(__DIR__);
-$dotenv->load();
+//$dotenv = Dotenv\Dotenv::create(__DIR__);
+//$dotenv->load();
 
 $endpoint = getenv('WEBHOOK_URL');
 $payload  = [
