@@ -10,6 +10,7 @@ LABEL "homepage"="https://github.com/svikramjeet/git-actions"
 LABEL "maintainer"="svikramjeet"
 LABEL "version"="1.0"
 
+COPY .env.example /var/www/html/.env
 ADD composer.json composer.lock /var/www/html/
 RUN composer install
 ADD entrypoint.php /var/www/html/
