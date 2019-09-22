@@ -1,11 +1,6 @@
 <?php
-ini_set("display_errors", "1");
-error_reporting(E_ALL);
 include_once('vendor/autoload.php');
 
-//$dotenv = Dotenv\Dotenv::create(__DIR__);
-//$dotenv->load();
-print_r(getenv());exit;
 $endpoint = getenv('WEBHOOK_URL');
 $payload  = [
     'text' => getenv('TEXT') ?? "Hello",
