@@ -1,0 +1,16 @@
+{
+    "name": "svikramjeet/git-action",
+    "description": "Slack notifier for git actions",
+    "require": {
+        "php": ">=7.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "vlucas/phpdotenv": "^3.6"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "svikramjeet",
+            "email": "vikkramjeet@gmail.com"
+        }
+    ]
+}
