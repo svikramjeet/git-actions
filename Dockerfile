@@ -13,6 +13,7 @@ LABEL "version"="1.0"
 ADD composer.json composer.lock /
 RUN composer install
 ADD entrypoint.php /
+ADD composer.json /
 RUN chmod +x /entrypoint.php
 
 ENTRYPOINT ["php", "/entrypoint.php"]
