@@ -15,4 +15,6 @@ RUN composer install
 ADD entrypoint.php /var/www/html/
 RUN chmod +x /var/www/html/entrypoint.php
 
+RUN ls -a
+
 ENTRYPOINT ["php", "/var/www/html/entrypoint.php"]
