@@ -11,6 +11,7 @@ LABEL "maintainer"="svikramjeet"
 LABEL "version"="1.0"
 
 ADD composer.json composer.lock /var/www/html/
+RUN apt-get install php-zip
 RUN composer install
 ADD entrypoint.php /var/www/html/
 ADD composer.json /var/www/html/
