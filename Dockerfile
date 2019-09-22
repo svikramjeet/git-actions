@@ -10,10 +10,10 @@ LABEL "homepage"="https://github.com/svikramjeet/git-actions"
 LABEL "maintainer"="svikramjeet"
 LABEL "version"="1.0"
 
-ADD composer.json composer.lock /
+ADD composer.json composer.lock /var/www/html
 RUN composer install
-ADD entrypoint.php /
-ADD composer.json /
-RUN chmod +x /entrypoint.php
+ADD entrypoint.php /var/www/html
+ADD composer.json /var/www/html
+RUN chmod +x //var/www/html/entrypoint.php
 
-ENTRYPOINT ["php", "/entrypoint.php"]
+ENTRYPOINT ["php", "/var/www/html/entrypoint.php"]
