@@ -18,7 +18,7 @@ This GitHub action code is available on github ,check it out : https://github.co
     WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
     MESSAGE: 'Custom message'.
     USERNAME: ThisIsMyUsername # Optional.
-    CHANNEL: general - Slack channel# Optional.
+    CHANNEL: general - Slack channel # Optional.
     ICON: ${{ secrets.ICON }}
   uses: svikramjeet/git-actions@master
 ```
