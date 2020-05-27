@@ -8,11 +8,13 @@ LABEL "com.github.actions.color"="red"
 LABEL "repository"="https://github.com/svikramjeet/actions"
 LABEL "homepage"="https://github.com/svikramjeet/git-actions"
 LABEL "maintainer"="svikramjeet"
-LABEL "version"="1.0"
 
-ADD composer.json composer.lock /
+COPY .env.example /var/www/html/.env
+ADD composer.json composer.lock /var/www/html/
 RUN composer install
-ADD entrypoint.php /
-RUN chmod +x /entrypoint.php
+ADD entrypoint.php /var/www/html/
+RUN chmod +x /var/www/html/entrypoint.php
 
-ENTRYPOINT ["php", "/entrypoint.php"]
+RUN ls -a
+
+ENTRYPOINT ["php", "/var/www/html/entrypoint.php"]
