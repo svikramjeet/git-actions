@@ -1,5 +1,6 @@
-name: L7
+name: github-action-for-slack-notification
 author: svikramjeet
+description: github action to post message on slack
 on:
   push:
     branches: [ master ]
