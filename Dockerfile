@@ -1,21 +1,16 @@
-FROM svikramjeet/php7.3
+FROM php:7.3-cli
 
-LABEL "com.github.actions.name"="GitHub Action for Slack Notification"
-LABEL "com.github.actions.description"="Send a message to Slack from gihub via actions"
-LABEL "com.github.actions.icon"="hash"
-LABEL "com.github.actions.color"="red"
+RUN apt-get update && apt-get -y install zip unzip
 
-LABEL "repository"="https://github.com/svikramjeet/actions"
-LABEL "homepage"="https://github.com/svikramjeet/git-actions"
-LABEL "maintainer"="svikramjeet"
-LABEL "version"="1.0"
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+RUN php -r "if (hash_file('sha384', 'composer-setup.php') === 'e0012edf3e80b6978849f5eff0d4b4e4c79ff1609dd1e613307e16318854d24ae64f26d17af3ef0bf7cfb710ca74755a') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+RUN php composer-setup.php
+RUN php -r "unlink('composer-setup.php');"
 
-COPY .env.example /var/www/html/.env
-ADD composer.json composer.lock /var/www/html/
-RUN composer install
-ADD entrypoint.php /var/www/html/
-RUN chmod +x /var/www/html/entrypoint.php
+RUN mv composer.phar /usr/local/bin/composer
 
-RUN ls -a
+RUN mkdir /phplint && cd /phplint && composer require overtrue/phplint && ln -s /phplint/vendor/bin/phplint /usr/local/bin/phplint
 
-ENTRYPOINT ["php", "/var/www/html/entrypoint.php"]
+COPY "entrypoint.sh" "/entrypoint.sh"
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
