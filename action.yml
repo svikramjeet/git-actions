@@ -1,19 +1,9 @@
-name: github-action-for-slack-notification
-author: svikramjeet
-description: github action to post message on slack
-icon: bell
-on:
-  push:
-    branches: [ master ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Slack notification
-      env:
-        CHANNEL: devops-vikram-jd
-        TEXT: Notify slack
-      uses: svikramjeet/git-actions@master
-
+name: 'github-action-for-slack-notification'
+author: 'svikramjeet'
+description: 'The github action to post message on slack'
+branding:
+  icon: 'bell'
+  color: 'yellow'
+runs:
+  using: 'docker'
+  image: 'docker://svikramjeet/php7.3'
