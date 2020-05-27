@@ -2,7 +2,8 @@ name: 'github-action-for-slack-notification'
 author: 'svikramjeet'
 description: 'The github action to post message on slack'
 runs:
-  using: 'node12'
+  using: 'docker'
+  image: 'Dockerfile'
 branding:
   icon: hash
   color: red
