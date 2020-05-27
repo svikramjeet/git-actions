@@ -1,4 +1,4 @@
-name: github-action-for-slack-notification
+name: github-actions
 author: svikramjeet
 description: github action to post message on slack
 on:
@@ -15,5 +15,5 @@ jobs:
         WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
         CHANNEL: devops-vikram-jd
         TEXT: Notify slack
-      uses: svikramjeet/git-actions@master
+      uses: svikramjeet/git-actions@v2.2
 
