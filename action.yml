@@ -1,6 +1,8 @@
 name: 'github-action-for-slack-notification'
 author: 'svikramjeet'
 description: 'The github action to post message on slack'
+runs:
+  using: 'ubuntu-latest'
 branding:
-  icon: 'bell'
-  color: 'yellow'
+  icon: hash
+  color: red
