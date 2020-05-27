@@ -3,7 +3,7 @@ include_once('vendor/autoload.php');
 
 $endpoint = getenv('WEBHOOK_URL');
 $payload  = [
-    'text' => getenv('TEXT') ?? "Hello",
+    'message' => getenv('MESSAGE') ?? "Hello",
     'channel' => getenv('CHANNEL') ?? "general",
     'username' => getenv('USERNAME') ?? "svikramjeet",
     'icon_url' => getenv('ICON') ?? ':ghost:'
