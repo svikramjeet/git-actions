@@ -1,6 +1,7 @@
 name: github-action-for-slack-notification
 author: svikramjeet
 description: github action to post message on slack
+icon: bell
 on:
   push:
     branches: [ master ]
