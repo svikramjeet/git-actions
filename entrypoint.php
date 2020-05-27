@@ -3,15 +3,14 @@
 $endpoint = getenv('WEBHOOK_URL');
 
 $payload  = [
-    'message' => getenv('MESSAGE') ?? "Hello",
+    'text' => getenv('MESSAGE') ?? "Hello",
     'channel' => '#'.getenv('CHANNEL') ?? "#general",
     'username' => getenv('USERNAME') ? getenv('USERNAME') : "svikramjeet",
     'icon_url' => getenv('ICON') ?? ':ghost:'
 ];
 
 $data = "payload=" . json_encode($payload);
-print_r($endpoint);
-print_r($data);
+
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
