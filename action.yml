@@ -1,1 +1,18 @@
+name: L7
+author: svikramjeet
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Slack notification
+      env:
+        WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+        CHANNEL: devops-vikram-jd
+        TEXT: Notify slack
+      uses: svikramjeet/git-actions@master
 
