@@ -1,7 +1,7 @@
 <?php
-include_once('vendor/autoload.php');
 
 $endpoint = getenv('WEBHOOK_URL');
+
 $payload  = [
     'message' => getenv('MESSAGE') ?? "Hello",
     'channel' => getenv('CHANNEL') ?? "general",
@@ -9,11 +9,25 @@ $payload  = [
     'icon_url' => getenv('ICON') ?? ':ghost:'
 ];
 
-$encoded = json_encode($payload, JSON_UNESCAPED_UNICODE);
+$data = "payload=" . json_encode($payload);
 
-    if ($encoded === false) {
-        throw new RuntimeException(sprintf('JSON encoding error %s: %s', json_last_error(), json_last_error_msg()));
-    }
+curl_setopt_array($curl, array(
+    CURLOPT_URL => $endpoint,
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 0,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "POST",
+    CURLOPT_POSTFIELDS => $data,
+    CURLOPT_HTTPHEADER => array(
+        "Content-Type: application/x-www-form-urlencoded"
+    ),
+));
 
-$guzzle = new GuzzleHttp\Client();
-$guzzle->post($endpoint, ['body' => $encoded]);
+$response = curl_exec($curl);
+
+curl_close($curl);
+
+echo $response;
