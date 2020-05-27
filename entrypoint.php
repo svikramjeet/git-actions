@@ -3,8 +3,8 @@
 $endpoint = getenv('WEBHOOK_URL');
 
 $payload  = [
-    'message' => '#'.getenv('MESSAGE') ?? "#Hello",
-    'channel' => getenv('CHANNEL') ?? "general",
+    'message' => getenv('MESSAGE') ?? "#Hello",
+    'channel' => '#'.getenv('CHANNEL') ?? "#general",
     'username' => getenv('USERNAME') ?? "svikramjeet",
     'icon_url' => getenv('ICON') ?? ':ghost:'
 ];
