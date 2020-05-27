@@ -1,4 +1,4 @@
-FROM svikramjeet/php7.3
+FROM svikramjeet/php7.4
 
 LABEL "com.github.actions.name"="GitHub Action for Slack Notification"
 LABEL "com.github.actions.description"="Send a message to Slack from gihub via actions"
@@ -9,9 +9,9 @@ LABEL "repository"="https://github.com/svikramjeet/actions"
 LABEL "homepage"="https://github.com/svikramjeet/git-actions"
 LABEL "maintainer"="svikramjeet"
 
-COPY .env.example /var/www/html/.env
-ADD composer.json composer.lock /var/www/html/
-RUN composer install
+#COPY .env.example /var/www/html/.env
+#ADD composer.json composer.lock /var/www/html/
+#RUN composer install
 ADD entrypoint.php /var/www/html/
 RUN chmod +x /var/www/html/entrypoint.php
 
