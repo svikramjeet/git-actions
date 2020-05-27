@@ -10,7 +10,8 @@ $payload  = [
 ];
 
 $data = "payload=" . json_encode($payload);
-
+print_r($endpoint);
+print_r($data);
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
