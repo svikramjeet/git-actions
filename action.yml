@@ -4,6 +4,3 @@ description: 'The github action to post message on slack'
 branding:
   icon: 'bell'
   color: 'yellow'
-runs:
-  using: 'docker'
-  image: 'docker://svikramjeet/php7.3'
